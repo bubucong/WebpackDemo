@@ -3,7 +3,7 @@
  */
 var webpack = require("webpack");
 var path = require("path");
-
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
     //webpack打包入口点
     entry:{
@@ -19,8 +19,8 @@ module.exports = {
         loaders:[
             {test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
             {test: /\.jsx?$/,exclude: /node_modules/,loaders: ['babel']},
-            {test: /\.css$/, loader: "style!css"},
-            {test: /\.scss$/, loader: "style!css!sass" }
+            {test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader")},
+            {test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader") }
         ]
     },
     resolve:{
@@ -28,7 +28,8 @@ module.exports = {
         extensions: ['', '.js', '.json', '.scss']
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor_bundle.js')//这是妮第三方库打包生成的文件
+        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor_bundle.js'),//这是第三方库打包生成的文件
+        new ExtractTextPlugin("[name].css")//在这里将样式文件抽离成单独的css文件
     ]
 
 }

@@ -1,0 +1,24 @@
+#MainPageWrapper{
+  padding:0;
+  margin:0;
+  #MainTitle{
+    width:100%;
+    height:60px;
+    background-color:#0086b3;
+  }
+  #MainBody{
+    min-height:800px;
+  }
+  #MainFoot{
+    width:100%;
+    height:60px;
+    background-color:#0086b3;
+  }
+  .TabBtn{
+    width:120px;
+    height:40px;
+    line-height: 40px;
+    text-align:center;
+    background-color:#6699cc;
+  }
+}

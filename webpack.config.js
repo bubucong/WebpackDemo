@@ -43,8 +43,8 @@ module.exports = {
             "window.jQuery": "jquery"
         }),//在这里可以为所有的webpack module提供$对象
         new CopyWebpackPlugin([
-            {from: 'mainPage/MainPage.html',to:"/MainPage/MainPage.html"},
-            {from: 'SubPages/SubPage1/SubPage1.html',to:"/SubPages/SubPage1/SubPage1.html"}
+            {from: 'mainPage/MainPage.html',to:"/MainPage", toType: 'dir'},//添加了toType属性后，就可以将页面拷贝到文件夹中
+            {from: 'SubPages/SubPage1/SubPage1.html',to:"/SubPages/SubPage1", toType: 'dir'}
         ])
     ]
 }
